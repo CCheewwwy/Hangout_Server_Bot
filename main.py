@@ -19,6 +19,25 @@ async def hi(ctx):
     await ctx.reply("Hello, and welcome to Hangout Server!")
 
 
+
+@bot.event
+async def on_message(message):
+    # Ignore messages from the bot itself
+    if message.author.bot:
+        return
+
+    # Check if the bot was pinged AND the message contains "prefix" (case-insensitive)
+    if bot.user in message.mentions and message.content.lower().strip().endswith("prefix"):
+        embed = discord.Embed(
+            title="Bot Prefix",
+            description='The prefix is "."',
+            color=discord.Color.blue()
+        )
+        await message.channel.send(embed=embed)
+
+    # Allow commands to still work
+    await bot.process_commands(message)
+
 ## ======================
 
 bot.run(token)
