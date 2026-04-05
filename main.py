@@ -10,7 +10,7 @@ token = os.getenv('DISCORD_TOKEN')
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 intents = discord.Intents.all()
 
-bot = commands.Bot(command_prefix=':', intents=intents, case_insensitive=True)
+bot = commands.Bot(command_prefix='.', intents=intents, case_insensitive=True)
 
 ## ======================
 
